@@ -1,0 +1,41 @@
+#include <stdio.h>
+int arr[501][501];
+int Max(int a, int b)
+{
+    return a > b ? a : b;
+}
+void triangle(int n)
+{
+    int i,j;
+    int max = 99999999;
+    for (i = 0; i <n; i++)
+    {
+        for (j = 0; j < i; j++)
+        {
+            if (j == 1)
+            {
+                arr[i][j] += arr[i - 1][j];
+            }
+            else if (i == j)
+            {
+                arr[i][j] += arr[i - 1][j-1];
+            }
+            else
+           {
+                arr[i][j] = Max(arr[i - 1][j], arr[i - 1][j - 1]) + arr[i][j];
+            }
+            if (max < arr[i][j])max = arr[i][j];
+        }
+    }
+    printf("%d", max);
+}
+int main()
+{
+    int n;
+    int i, j;
+    scanf("%d", &n);
+    for (i = 0; i < n; i++)
+        for (j = 0; j < i; j++)
+            scanf("%d", &arr[i][j]);
+    triangle(n);
+}
