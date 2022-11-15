@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int t, N, z[41] = { 1 };
+  int o[41] = { 0, 1 };
+
+  for(int n = 2; n <= 40; n++)
+  {
+    z[n] = z[n-1] + z[n-2];
+    o[n] = o[n-1] + o[n-2];
+  }
+
+  cin >> t;
+  for(int i = 0; i < t; i++)
+  {
+    cin >> N;
+    cout << z[N] << ' ' << o[N] << endl;
+  }
+  return 0;
+}
