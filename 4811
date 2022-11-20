@@ -1,0 +1,22 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+long long arr[31][31] = {0,};
+long long med(int x,int y);
+int main(){
+        int n;
+        while(1){
+                cin >> n;
+                if(n==0) break;
+                cout << med(n,0) << endl;
+        }
+}
+long long med(int x,int y){
+        if(x<0) return 0;
+        if(arr[x][y] > 0) return arr[x][y];
+        if(x==0 && y == 0) return 1;
+        if(x>0) arr[x][y] += med(x-1,y+1);
+        if(y>0) arr[x][y] += med(x,y-1);
+        return arr[x][y];
+}
