@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+void divide(){
+        int D,K;
+        int arr[31] = {};
+        int arr1[31] ={};
+        cin >> D >> K;
+        arr[1] = 1;
+        arr[2] = 0;
+        arr1[1] = 0;
+        arr1[2] = 1;
+        for( int i=3;i<=D;i++){
+                arr[i] = arr[i-1]+arr[i-2];
+                arr1[i] = arr1[i-1] + arr1[i-2];
+        }
+        for(int i=1;i<=K;i++){
+                int divide = K-(arr[D]*i);
+                if(divide % arr1[D] == 0){
+                        cout << i << endl << divide / arr1[D] << endl;
+                        return;
+                }
+        }
+}
+int main(){
+    divide();
+}
