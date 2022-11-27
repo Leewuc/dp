@@ -1,0 +1,31 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+#define INF 99999999
+
+int arr[501][501];
+int cost[501];
+int sum[501];
+
+int main(){
+        int t,k;
+        cin >> t;
+        while (t--){
+                cin >> k;
+                for(int i=1; i<=k; i++){
+                        cin >> cost[i];
+                        sum[i] = sum[i-1] + cost[i];
+                }
+        for(int a=1;a<k;a++){
+                for(int b=1;b+a <= k; b++){
+                        int c = b+a;
+                        arr[b][c] = INF;
+                        for(int d = b; d < c; d++){
+                                arr[b][c] = min(arr[b][c],arr[b][d] + arr[d+1][c] + sum[c] - sum[b-1]);
+                        }
+                }
+        }
+        cout << arr[1][k] << endl;
+        }
+}
