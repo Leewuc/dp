@@ -1,0 +1,22 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int arr[1001];
+int arr1[1001];
+int main(){
+        int n,box=0;
+        cin >> n;
+        for(int i=0;i<n;i++)
+                cin >> arr[i];
+        for(int i=0;i<n;i++){
+                for(int j=0;j<i; j++){
+                        if(arr[i] > arr[j]){
+                                arr1[i] = max(arr1[i],arr1[j]+1);
+                                box = max(arr1[i],box);
+                        }
+                }
+        }
+        cout << box+1;
+        return 0;
+}
