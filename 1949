@@ -1,0 +1,38 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+int n;
+int map[10001];
+int dp[10001][2];
+vector <int> arr[10001];
+bool visit[10001];
+
+void find(int cur){
+        if(visit[cur]) return;
+        visit[cur] = 1;
+        int &start = dp[cur][0];
+        int &last = dp[cur][1];
+        start = 0;
+        last = map[cur];
+        for(int i=0;i<arr[cur].size();i++){
+                int num = arr[cur][i];
+                if(visit[num] == 1) continue;
+                find(num);
+                start += max(dp[num][1],dp[num][0]);
+                            last += dp[num][0];
+        }
+}
+int main(){
+        cin >> n;
+        for(int i=1;i<=n;i++) cin >> map[i];
+        for(int i=1;i<=n;i++){
+                int a,b;
+                cin >> a >> b;
+                arr[a].push_back(b);
+                arr[b].push_back(a);
+        }
+        find(1);
+        cout << max(dp[1][0],dp[1][1])<<endl;
+}
