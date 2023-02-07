@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+int n;
+int m;
+int arr[10];
+bool nm[10];
+void funnm(int a){
+    if(a==m){
+        for(int i=0;i<m;i++) cout << arr[i] << ' ';
+        cout << '\n';
+        return;
+    }
+    for(int i=1;i<=n;i++){
+        if(!nm[i]){
+            arr[a] = i;
+            nm[i] = true;
+            funnm(a+1);
+            nm[i] = false;
+        }
+    }
+}
+int main(){
+    cin >> n >> m;
+    funnm(0);
+}
