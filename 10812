@@ -1,0 +1,17 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+int n,m;
+vector<int> a;
+int main(){
+    cin >> n >> m;
+    for(int i=1;i<=n;i++) a.push_back(i);
+    while(m--){
+        int x,y,z;
+        cin >> x >> y >> z;
+        rotate(a.begin()+(x-1),a.begin()+(z-1),a.begin()+y);
+    }
+    for(int i:a) cout << i << " ";
+    cout << '\n';
+}
