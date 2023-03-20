@@ -1,0 +1,22 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <string>
+using namespace std;
+int n;
+int main(){
+    vector<string> w[51];
+    string s;
+    cin >> n;
+    for(int i=0;i<n;i++){
+        cin >> s;
+        w[s.length()].push_back(s);
+    }
+    for(int i=0;i<51;i++){
+        sort(w[i].begin(),w[i].end());
+        w[i].erase(unique(w[i].begin(),w[i].end()),w[i].end());
+        for(int j=0;j<w[i].size();j++){
+            cout << w[i][j] << '\n';
+        }
+    }
+}
