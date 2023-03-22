@@ -1,0 +1,16 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+int n;
+int main(){
+    cin >> n;
+    int num = 666;
+    string a;
+    while(n>0){
+        a = to_string(num);
+        if(a.find("666") != -1) n--;
+        num++;
+    }
+    cout << a << '\n';
+}
