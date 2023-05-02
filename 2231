@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+int a[1000001] = {0};
+#define INF 987654321
+
+int main(){
+    int n;
+    cin >> n;
+    int b = INF;
+    for(int i=1;i<=n;i++){
+        int s = 10;
+        a[i] += i;
+        a[i] += i % s;
+        while(i/s != 0){
+            a[i] += i%(s*10)/s;
+            s *= 10;
+        }
+    }
+    for(int i=n; 1 <= i; i--){
+        if(a[i] == n){
+            if(i<b) b = i;
+        }
+    }
+    if(b == INF) {
+        cout << "0" << '\n';
+    }
+    else cout << b << '\n';
+}
