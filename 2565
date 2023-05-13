@@ -1,0 +1,30 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+int main(){
+    int n;
+    cin >> n;
+    vector <pair<int,int>> v;
+    int count[101] = {0,};
+    int res;
+    for(int i=0;i<n;i++){
+        int x,y;
+        cin >> x >> y;
+        v.push_back(make_pair(x,y));
+    }
+    sort(v.begin(),v.end());
+    res = 1;
+    for(int i=0;i<n;i++){
+        count[i] = 1;
+        for(int j=0;j<i;j++){
+            if(count[j]+1 > count[i] && v[j].second < v[i].second){
+                count[i] = count[j]+1;
+            }
+        }
+        if(res < count[i]){
+            res = count[i];
+        }
+    }
+    cout << n-res << '\n';
+}
