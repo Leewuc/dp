@@ -1,0 +1,24 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+using namespace std;
+int main(){
+    int n,m;
+    cin >> n >> m;
+    string a;
+    vector <string> out;
+    vector <string> v(n);
+    sort(v.begin(),v.end());
+    for(int i=0;i<m;i++){
+        cin >> a;
+        if(binary_search(v.begin(),v.end(),a)){
+            out.push_back(a);
+        }
+    }
+    sort(out.begin(),out.end());
+    cout << out.size() << '\n';
+    for(string tmp:out){
+        cout << tmp << '\n';
+    }
+}
