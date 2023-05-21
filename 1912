@@ -1,0 +1,18 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int a[100001];
+    int b[100001];
+    int n;
+    int out = INT_MIN;
+    cin >> n;
+    for(int i=0;i<n;i++){
+        cin>> a[i];
+    }
+    for(int i=0;i<n;i++){
+        b[i] = max(a[i],b[i-1]+a[i]);
+        out = max(out,b[i]);
+    }
+    cout << out;
+    return 0;
+}
