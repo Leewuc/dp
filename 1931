@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <algorithm>
+using namespace std;
+int n;
+int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    cin >> n;
+    vector <pair<int,int>> v;
+    queue <pair<int,int>> q;
+    int a,b,x;
+    int cnt = 0;
+    for(int i=0;i<n;i++){
+        cin >> a >> b;
+        v.push_back({b,a});
+    }
+    sort(v.begin(),v.end());
+    for(int i=0;i<n;i++){
+        q.push({v[i].first,v[i].second});
+    }
+    while(!q.empty()){
+        x = q.front().first;
+        q.pop();
+        cnt++;
+        if(q.empty()){
+            break;
+        }
+        while(x > q.front().second){
+            q.pop();
+            if(q.empty()){
+                break;
+            }
+        }
+    }
+    cout << cnt << '\n';
+}
