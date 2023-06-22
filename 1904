@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    int n;
+    long long array[1000001];
+    long long a = 0;
+    cin >> n;
+    array[1] = 1;
+    array[2] = 2;
+    array[3] = 3;
+    for(int i=4; i<=n;i++){
+        a = array[i-1] + array[i-2];
+        array[i] = a%15746;
+    }
+    cout << array[n] << '\n';
+    return 0;
+}
