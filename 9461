@@ -1,0 +1,24 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+int pibo(int n){
+    vector<long> pib(101,0);
+    pib[1] = pib[2] = pib[3] = 1;
+    pib[4] = pib[5] = 2;
+    for(int i=6;i<=n;i++){
+        pib[i] = pib[i-1] + pib[i-5];
+    }
+    return pib[n];
+}
+int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    int n,m;
+    cin >> n;
+    for(int i=0;i<n;i++){
+        cin >> m;
+        cout << pibo(n) << '\n';
+    }
+    return 0;
+}
