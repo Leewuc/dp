@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+int n;
+int ans;
+int c[15];
+int up[31];
+int down[31];
+void chess(int m){
+    int x,y;
+    for(int i=0;i<n;i++){
+        x = m+i;
+        y = n+m-i-1;
+    if(!c[i] && !up[x] && !down[y]){
+        if(m == n-1){
+            ans++;
+            continue;
+        }
+        c[i] = up[x] = down[y] = 1;
+        chess(m+1);
+        c[i] = up[x] = down[y] = 0;
+        }
+    }
+    return;
+}
+int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    cin >> n;
+    chess(0);
+    cout << ans;
+    return 0;
+}
